@@ -20,6 +20,9 @@ Route::post('movies', 'MovieController@store');
 Route::get('actor/{movieID}', 'ActorController@index');
 Route::post('actor', 'ActorController@store');
 
+Route::get('genre/{movieID}', 'GenreController@index');
+Route::post('genre', 'GenreController@store');
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
