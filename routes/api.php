@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('movies', 'MovieController@index');
+Route::get('movies/{id}', 'MovieController@show');
+Route::post('movies', 'MovieController@store');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
