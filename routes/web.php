@@ -21,10 +21,11 @@ Route::get('/', function () {
 
 
 Route::get('api/review/{id}', 'reviewController@show');
+Route::put('api/review', 'reviewController@edit');
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
     Route::post('review', 'reviewController@store');
-    Route::put('review/{id}', 'reviewController@edit');
+    
 });
 
 Route::group(['middleware' => 'web'], function() {

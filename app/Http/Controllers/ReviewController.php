@@ -66,9 +66,16 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+        $review = Review::select('*')->where('id', $request->input('id'))->where('userID', Auth::guard('api')->id())->first();
+        $review->update([
+            'content'   => $request->input('content'),
+            'rating'    => $request->input('rating'),
+        ]);
+
+        return $review;
     }
 
     /**
