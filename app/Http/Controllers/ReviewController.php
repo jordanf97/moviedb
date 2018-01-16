@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Review;
+use App\Movie;
 
 class ReviewController extends Controller
 {
@@ -38,7 +39,7 @@ class ReviewController extends Controller
         if($total > 0) {
             $rating = $total / count($reviews);
         }
-        Movies::where('id',$request->input('movieID'))->update(['rating'=> $rating]);
+        Movie::where('id',$request->input('movieID'))->update(['rating'=> $rating]);
         return $review;
     }
 
