@@ -32,4 +32,5 @@ Route::group(['middleware' => 'web'], function() {
     Route::auth();
 
     route::get('/home', 'HomeController@index');
+    route::get('/movies', 'MovieViewController@index');
 });
