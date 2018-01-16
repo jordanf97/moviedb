@@ -20,6 +20,13 @@ Route::get('/', function () {
 //Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::get('api/review/{id}', 'reviewController@show');
+
+Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
+    Route::post('review', 'reviewController@store');
+    Route::put('review/{id}', 'reviewController@edit');
+});
+
 Route::group(['middleware' => 'web'], function() {
     Route::auth();
 
