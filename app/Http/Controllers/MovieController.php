@@ -16,27 +16,27 @@ class MovieController extends Controller
 
     public function store(Request $request) {
 
+        $movie = Movie::create([
+            'title' => $request->input('title'),
+            'synopsis' => $request->input('synopsis')
+        ]);
+
         $actors = explode(',', $request->input('actors'));
         $genres = explode(',', $request->input('genres'));
 
         foreach($actors as $actor) {
             Actor::create([
                 'name'  => $actor,
-                'movieID' => $movieID
+                'movieID' => $movie->id
             ]);
         }
 
         foreach($genres as $genre) {
             Genre::create([
                 'genre' => $genre,
-                'movieID'   => $movieID
+                'movieID'   => $movie->id
             ]);
         }
-
-        $movie = Movie::create([
-            'title' => $request->input('title'),
-            'synopsis' => $request->input('synopsis')
-        ]);
 
         return $movie;
     }

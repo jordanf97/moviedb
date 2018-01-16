@@ -19,13 +19,27 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
 
-        return Review::create([
+        $review = Review::create([
             'content'   => $request->input('content'),
             'rating'    => $request->input('rating'),
             'movieID'   => $request->input('movieID'),
             'userID'    => Auth::guard('api')->id()
             
         ]);
+
+
+        $reviews = Review::select('rating')->where('movieID', $request->input('movieID'))->get();
+        $total = 0;
+        $rating = 0;
+        foreach($reviews as $curr_review) {
+            $total += (int) $curr_review->rating;
+        }
+
+        if($total > 0) {
+            $rating = $total / count($reviews);
+        }
+        Movies::where('id',$request->input('movieID'))->update(['rating'=> $rating]);
+        return $review;
     }
 
     /**
