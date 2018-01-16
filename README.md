@@ -17,3 +17,5 @@ Although the backend is fully functional and to standard there is no frontend, a
 ## Installation
 
 The project uses no additional dependancies other than Laravel 5.5.29 and a MySQL server.
+
+Simply clone the repository and you should be good to go
