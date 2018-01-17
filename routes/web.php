@@ -13,7 +13,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
     Route::post('review', 'reviewController@store');
     Route::post('genre', 'GenreController@store');
     Route::post('actor', 'ActorController@store');
-    
+    Route::get('user', function(Request $request) {
+        return response()->json($request->user());
+    });
 });
 
 Route::group(['middleware' => 'web'], function() {
