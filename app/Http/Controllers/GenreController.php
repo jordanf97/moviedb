@@ -12,7 +12,7 @@ class GenreController extends Controller
     }
 
     public function store(Request $request) {
-        return Actor::create([
+        return Genre::create([
             'genre' => $request->input('genre'),
             'movieID'   => $request->input('movieID')
         ]);
