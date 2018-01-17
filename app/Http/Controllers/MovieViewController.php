@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 
 
@@ -16,4 +17,13 @@ class MovieViewController extends Controller
         return view('movieView', ["movies" => $movies]);
     }
     
+    public function view($id) {
+        $movie = new MovieController();
+        $movie = $movie->show($id);
+
+        $reviews = new ReviewController();
+        $reviews = $reviews->show($movie->id);
+
+        return view('showMovie', ['movie' => $movie, 'reviews' => $reviews]);
+    }
 }
