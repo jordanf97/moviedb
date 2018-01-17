@@ -10,21 +10,23 @@ use App\Movie;
 class ReviewController extends Controller
 {
 
-    public function store(Request $request)
+    public function store(Request $request, $userID = null)
     {
+
+        if($userID === null) $userID = Auth::gaurd('api')->id();
 
         $validatedData = $request->validate([
             'content'   => 'required|max:191',
             'rating'    => 'required|integer',
-            'movieID'   => 'required|integer',
-            'userID'    => 'required|integer'
+            'movieID'   => 'required|integer'
         ]);
+
 
         $review = Review::create([
             'content'   => $request->input('content'),
             'rating'    => $request->input('rating'),
             'movieID'   => $request->input('movieID'),
-            'userID'    => Auth::guard('api')->id()
+            'userID'    => $userID
             
         ]);
 

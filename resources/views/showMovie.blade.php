@@ -21,6 +21,23 @@
                     </p>
                     <hr />
                 @endforeach
+
+                @if (Auth::check())
+                    <h2>Leave A Review</h2>
+                    <form method="POST">
+                        Content: <input type="text" name="content" /><br />
+                        Rating: <select name="rating">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select><br />
+                        <input type="hidden" name="movieID" value="{{ $movie->id }}" />
+                        <input type="submit" name="submit" value="Submit" />
+
+                    </form>
+                @endif
                 </div>
             </div>
         </div>

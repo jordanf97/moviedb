@@ -24,4 +24,5 @@ Route::group(['middleware' => 'web'], function() {
     route::get('/home', 'HomeController@index');
     route::get('/movies', 'MovieViewController@index');
     route::get('/movies/{id}', 'MovieViewController@view');
+    route::post('/movies/{id}', 'MovieViewController@addReview');
 });
