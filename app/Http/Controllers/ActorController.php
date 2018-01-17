@@ -14,7 +14,7 @@ class ActorController extends Controller
     public function store(Request $request) {
 
         $validatedData = $request->validate([
-            'actor' => 'required|max:15|min:4',
+            'name' => 'required|max:15|min:4',
             'movieID' => 'required|integer',
         ]);
 

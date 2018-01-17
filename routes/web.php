@@ -13,6 +13,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
     Route::post('review', 'reviewController@store');
     Route::post('genre', 'GenreController@store');
     Route::post('actor', 'ActorController@store');
+    Route::post('movies', 'MovieController@store');
 });
 
 Route::group(['middleware' => 'web'], function() {
