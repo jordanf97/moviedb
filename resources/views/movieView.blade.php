@@ -8,7 +8,14 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                   
+                @foreach ($movies as $movie)
+                    <p> 
+                        <a href="/movies/{{ $movie->id }}">{{ $movie->title }}</a> <br />
+                        {{ $movie->synopsis }}<br />
+                        Ratng: {{ $movie->rating }}
+                    </p>
+                    <hr />
+                @endforeach
                 </div>
             </div>
         </div>
