@@ -15,10 +15,10 @@ class MovieController extends Controller
     }
 
     public function store(Request $request) {
-
+        
         $validatedData = $request->validate([
             'title'     => 'required|max:30',
-            'synpsis'   => 'required|max:255',
+            'synopsis'   => 'required|max:255',
             'actors'    => 'required|min:5',
             'genres'    => 'required|min:5'
         ]);

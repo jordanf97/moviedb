@@ -66,7 +66,7 @@ class MovieViewController extends Controller
 
     public function addMovie() {
         if(Auth::check()) {
-            return view('addMovie');
+            return view('addMovie', ['user' => Auth::user()]);
         } else {
             return view('notification', ['message' => 'You must be logged in to access this area!']);
         }
@@ -75,7 +75,7 @@ class MovieViewController extends Controller
     public function addMovieSubmit(Request $request) {
         $validatedData = $request->validate([
             'title'     => 'required|max:30',
-            'synpsis'   => 'required|max:255',
+            'synopsis'   => 'required|max:255',
             'actors'    => 'required|min:5',
             'genres'    => 'required|min:5'
         ]);

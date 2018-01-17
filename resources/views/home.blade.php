@@ -18,7 +18,7 @@
 
                     Wanna see some movies? <a href="/movies">Check them out!</a>
 
-                    <p>wanna add your own movie? <a href="/movies/add">Add it now!</a></p>
+                    <p>wanna add your own movie? <a href="/movie/add">Add it now!</a></p>
                 </div>
             </div>
         </div>

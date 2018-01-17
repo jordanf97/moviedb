@@ -17,6 +17,7 @@ class VerifyCsrfToken extends Middleware
         'api/movies',
         'api/actor',
         'movies/*',
-        'reviews/*'
+        'reviews/*',
+        'movie/*'
     ];
 }
