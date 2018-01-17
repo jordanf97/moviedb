@@ -68,6 +68,19 @@ class ReviewController extends Controller
             'rating'    => $request->input('rating'),
         ]);
 
+        $reviews = Review::select('rating')->where('movieID', $review->movieID)->get();
+        $total = 0;
+        $rating = 0;
+        foreach($reviews as $curr_review) {
+            $total += (int) $curr_review->rating;
+        }
+
+        if($total > 0) {
+            $rating = $total / count($reviews);
+        }
+
+        Movie::where('id', $review->movieID)->update(['rating'=> $rating]);
+
         return $review;
     }
 
