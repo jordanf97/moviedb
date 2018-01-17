@@ -40,4 +40,11 @@ class MovieViewController extends Controller
         $result = $reviewCtl->store($request, Auth::user()->id);
         return view('notification', ['message' => 'Review has been successfully added!']);
     }
+
+    public function editReview($id) {
+        $reviewCtl = new ReviewController();
+        $review = $reviewCtl->find($id);
+
+        return view('reviewEdit', ['review' => $review, 'user' => Auth::user()]);
+    }
 }

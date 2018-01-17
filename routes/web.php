@@ -31,4 +31,5 @@ Route::group(['middleware' => 'web'], function() {
 
 route::group(['middleware' => 'auth:api'], function() {
     route::post('/movies/{id}', 'MovieViewController@addReview');
+    route::Get('/reviews/edit/{id}', 'MovieViewController@editReview');
 });

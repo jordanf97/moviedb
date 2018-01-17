@@ -9,6 +9,9 @@ use App\Movie;
 
 class ReviewController extends Controller
 {
+    public function find($id) {
+        return Review::find($id);
+    }
 
     public function store(Request $request, $userID = null)
     {
