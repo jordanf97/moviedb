@@ -10,9 +10,9 @@
                 <div class="panel-body">
                     <form method="POST">
                         Title: <input type="text" name="title" /><br />
-                        Synopsis: <textarea name="synopsis"></textarea>
-                        Actors:(comma separated) <textarea name="actors"></textarea>
-                        Genres:(comma separated) <textarea name="Genres"></textarea>
+                        Synopsis: <textarea name="synopsis"></textarea><br />
+                        Actors:(comma separated) <textarea name="actors"></textarea><br />
+                        Genres:(comma separated) <textarea name="Genres"></textarea><br />
                         <input type="submit" value="Add Movie" name="submit" />
                     </form>
                 </div>

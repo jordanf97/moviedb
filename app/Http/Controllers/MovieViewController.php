@@ -71,4 +71,18 @@ class MovieViewController extends Controller
             return view('notification', ['message' => 'You must be logged in to access this area!']);
         }
     }
+
+    public function addMovieSubmit(Request $request) {
+        $validatedData = $request->validate([
+            'title'     => 'required|max:30',
+            'synpsis'   => 'required|max:255',
+            'actors'    => 'required|min:5',
+            'genres'    => 'required|min:5'
+        ]);
+
+        $movieCtl = new MovieController();
+        $movieCtl->store($request);
+
+        return 'Added';
+    }
 }

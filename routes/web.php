@@ -36,4 +36,5 @@ Route::group(['middleware' => 'web'], function() {
 route::group(['middleware' => 'auth:api'], function() {
     route::post('/movies/{id}', 'MovieViewController@addReview');
     route::post('/reviews/edit/{id}', 'MovieViewController@editReviewSubmit');
+    route::post('/movies/add', 'MovieViewController@addMovieSubmit');
 });
