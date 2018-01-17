@@ -24,13 +24,20 @@ class MovieViewController extends Controller
         $reviews = new ReviewController();
         $reviews = $reviews->show($movie->id);
 
-        return view('showMovie', ['movie' => $movie, 'reviews' => $reviews]);
+        return view('showMovie', ['movie' => $movie, 'reviews' => $reviews, 'userID' => Auth::user()->id]);
     }
 
     public function addReview($id, Request $request) {
         $reviewCtl = new ReviewController();
-        $result = $reviewCtl->store($request, Auth::user()->id);
+        
 
-        return 'Doneski';
+        $validatedData = $request->validate([
+            'content'   => 'required|max:191|min:5',
+            'rating'    => 'required|integer',
+            'movieID'   => 'required|integer'
+        ]);
+
+        $result = $reviewCtl->store($request, Auth::user()->id);
+        return view('notification', ['message' => 'Review has been successfully added!']);
     }
 }

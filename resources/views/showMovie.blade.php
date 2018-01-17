@@ -18,6 +18,9 @@
                         <a href="/movies/{{ $movie->id }}">{{ $review->content }}</a> <br />
                         Rating: {{ $review->rating }}<br />
                         Ratng: {{ $review->rating }}
+                        @if ($userID == $review->userID)
+                            <p><a href="/reviews/edit/{{ $review->id }}">Edit Your Review</a></p>
+                        @endif
                     </p>
                     <hr />
                 @endforeach
