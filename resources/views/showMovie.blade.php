@@ -18,7 +18,7 @@
                         <a href="/movies/{{ $movie->id }}">{{ $review->content }}</a> <br />
                         Rating: {{ $review->rating }}<br />
                         Ratng: {{ $review->rating }}
-                        @if ($userID == $review->userID)
+                        @if ($user->id == $review->userID)
                             <p><a href="/reviews/edit/{{ $review->id }}">Edit Your Review</a></p>
                         @endif
                     </p>
@@ -37,6 +37,7 @@
                             <option value="5">5</option>
                         </select><br />
                         <input type="hidden" name="movieID" value="{{ $movie->id }}" />
+                        <input type="hidden" name="api_token" value="{{ $user->api_token }}" />
                         <input type="submit" name="submit" value="Submit" />
 
                     </form>

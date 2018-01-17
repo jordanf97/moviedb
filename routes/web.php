@@ -24,5 +24,11 @@ Route::group(['middleware' => 'web'], function() {
     route::get('/home', 'HomeController@index');
     route::get('/movies', 'MovieViewController@index');
     route::get('/movies/{id}', 'MovieViewController@view');
+    
+});
+
+
+
+route::group(['middleware' => 'auth:api'], function() {
     route::post('/movies/{id}', 'MovieViewController@addReview');
 });

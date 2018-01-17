@@ -24,7 +24,7 @@ class MovieViewController extends Controller
         $reviews = new ReviewController();
         $reviews = $reviews->show($movie->id);
 
-        return view('showMovie', ['movie' => $movie, 'reviews' => $reviews, 'userID' => Auth::user()->id]);
+        return view('showMovie', ['movie' => $movie, 'reviews' => $reviews, 'user' => Auth::user()]);
     }
 
     public function addReview($id, Request $request) {
