@@ -83,6 +83,6 @@ class MovieViewController extends Controller
         $movieCtl = new MovieController();
         $movieCtl->store($request);
 
-        return 'Added';
+        return view('notification', ['message' => 'The movie has been successfully added!']);
     }
 }

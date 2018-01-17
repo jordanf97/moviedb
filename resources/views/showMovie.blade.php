@@ -25,6 +25,16 @@
                     <hr />
                 @endforeach
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 @if (Auth::check())
                     <h2>Leave A Review</h2>
                     <form method="POST">
