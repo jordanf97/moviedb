@@ -8,6 +8,8 @@
                 <div class="panel-heading">Movies</div>
 
                 <div class="panel-body">
+                <a href="/movie/add">Add new?</a>
+                <hr />
                 @foreach ($movies as $movie)
                     <p> 
                         <a href="/movies/{{ $movie->id }}">{{ $movie->title }}</a> <br />
@@ -16,6 +18,8 @@
                     </p>
                     <hr />
                 @endforeach
+
+                <a href="/movie/add">Add new?</a>
                 </div>
             </div>
         </div>

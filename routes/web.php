@@ -1,10 +1,6 @@
 <?php
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+route::get('/', 'MovieViewController@index');
 
 Route::get('api/review/{id}', 'reviewController@show');
 Route::put('api/review', 'reviewController@edit');
@@ -22,7 +18,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
 Route::group(['middleware' => 'web'], function() {
     Route::auth();
 
-    route::get('/home', 'HomeController@index');
+    //route::get('/home', 'HomeController@index');
+    route::get('/home', 'MovieViewController@index');
     route::get('/movies', 'MovieViewController@index');
     route::get('/movies/{id}', 'MovieViewController@view');
     

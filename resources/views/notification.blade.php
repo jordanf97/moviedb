@@ -9,6 +9,10 @@
 
                 <div class="panel-body">
                     {{ $message }}
+
+                    <p>
+                        <a href="/">Return to movies listing?</a>
+                    </p>
                 </div>
             </div>
         </div>

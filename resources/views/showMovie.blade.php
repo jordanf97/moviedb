@@ -17,7 +17,7 @@
                     <p> 
                         {{ $review->content }} <br />
                         Rating: {{ $review->rating }}<br />
-                        @if ($user->id == $review->userID)
+                        @if (Auth::check() and $user->id == $review->userID)
                             <p><a href="/reviews/edit/{{ $review->id }}">Edit Your Review</a></p>
                         @endif
                     </p>
