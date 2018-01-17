@@ -10,15 +10,15 @@ use App\Movie;
 class ReviewController extends Controller
 {
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'content'   => 'required|max:191',
+            'rating'    => 'required|integer',
+            'movieID'   => 'required|integer',
+            'userID'    => 'required|integer'
+        ]);
 
         $review = Review::create([
             'content'   => $request->input('content'),
@@ -43,28 +43,20 @@ class ReviewController extends Controller
         return $review;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
         return Review::select('*')->where('movieID', $id)->get();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
-        //
         $review = Review::select('*')->where('id', $request->input('id'))->where('userID', Auth::guard('api')->id())->first();
+
+        $validatedData = $request->validate([
+            'content'   => 'required|max:191',
+            'rating'    => 'required|integer'
+        ]);
+
         $review->update([
             'content'   => $request->input('content'),
             'rating'    => $request->input('rating'),
