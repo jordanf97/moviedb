@@ -12,9 +12,18 @@ class GenreController extends Controller
     }
 
     public function store(Request $request) {
-        return Genre::create([
+
+        $validatedData = $request->validate([
+            'genre' => 'required|max:15|min:4',
+            'movieID' => 'required|integer',
+        ]);
+
+
+        $genre = Genre::create([
             'genre' => $request->input('genre'),
             'movieID'   => $request->input('movieID')
         ]);
+
+        return response()->json($genre);
     }
 }
