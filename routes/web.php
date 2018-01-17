@@ -8,6 +8,7 @@ Route::get('/', function () {
 
 Route::get('api/review/{id}', 'reviewController@show');
 Route::put('api/review', 'reviewController@edit');
+route::get('/reviews/edit/{id}', 'MovieViewController@editReview');
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
     Route::post('review', 'reviewController@store');
@@ -31,5 +32,5 @@ Route::group(['middleware' => 'web'], function() {
 
 route::group(['middleware' => 'auth:api'], function() {
     route::post('/movies/{id}', 'MovieViewController@addReview');
-    route::Get('/reviews/edit/{id}', 'MovieViewController@editReview');
+    route::post('/reviews/edit/{id}', 'MovieViewController@editReviewSubmit');
 });

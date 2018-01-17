@@ -10,9 +10,9 @@
                 <div class="panel-body">
                 <form method="POST">
                         Content: <input type="text" name="content" value="{{$review->content}}" /><br />
-                        Rating:  <input type="text" name="rating" value="{{$review->rating}}" />
+                        Rating:  <input type="number" name="rating" value="{{$review->rating}}" />
                         </select><br />
-                        <input type="hidden" name="movieID" value="{{ $review->movieID }}" />
+                        <input type="hidden" name="id" value="{{ $review->id }}" />
                         <input type="hidden" name="api_token" value="{{ $user->api_token }}" />
                         <input type="submit" name="submit" value="Submit" />
 

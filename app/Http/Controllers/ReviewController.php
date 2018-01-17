@@ -53,9 +53,10 @@ class ReviewController extends Controller
         return Review::select('*')->where('movieID', $id)->get();
     }
 
-    public function edit(Request $request)
-    {
-        $review = Review::select('*')->where('id', $request->input('id'))->where('userID', Auth::guard('api')->id())->first();
+    public function edit(Request $request, $userID = null)
+    {   
+        if($userID === null) $userID =  Auth::guard('api')->id();
+        $review = Review::select('*')->where('id', $request->input('id'))->where('userID', $userID)->first();
 
         $validatedData = $request->validate([
             'content'   => 'required|max:191',

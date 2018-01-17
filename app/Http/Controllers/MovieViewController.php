@@ -45,6 +45,24 @@ class MovieViewController extends Controller
         $reviewCtl = new ReviewController();
         $review = $reviewCtl->find($id);
 
-        return view('reviewEdit', ['review' => $review, 'user' => Auth::user()]);
+        if(Auth::user()->id == $review->userID) {
+            return view('reviewEdit', ['review' => $review, 'user' => Auth::user()]);
+        } else {
+            return view('notification', ['message' => 'This does not seem to be your review']);
+        }
+
+    }
+
+    public function editReviewSubmit($id, Request $request) {
+        $validatedData = $request->validate([
+            'content'   => 'required|max:191|min:5',
+            'rating'    => 'required|integer',
+            'movieID'   => 'required|integer'
+        ]);
+
+        $reviewCtl = new ReviewController();
+        $updatedReview = $reviewCtl->edit($request, Auth::user()->id);
+
+        return 'Review updated!';
     }
 }
