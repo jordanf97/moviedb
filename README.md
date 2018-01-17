@@ -10,9 +10,13 @@ My first attempt did not work overly well and so after a fair amount of hours I 
 
 My second attempt is the result, being completed in a third of the time, to a much higher standard.
 
-The project meets all criteria including only allowing authenticated users to post reviews and allowing authenticated users toedit their own reviews.
+The project meets all criteria including only allowing authenticated users to post reviews and allowing authenticated users to edit their own reviews.
 
-Although the backend is fully functional and to standard there is no frontend, although that can be added with little effort.
+The backend is fully functional, now with a fully functional front end which incorporates styled form fields, client side validation and proper validation error catching.
+
+## Internal API interaction
+
+As the backend and front end are both one internal system I decided against using the API in a traditional sense over the HTTP protocol and opt to interact with it directly, which has been slightly awkward.
 
 ## Installation
 
