@@ -57,12 +57,11 @@ class MovieViewController extends Controller
         $validatedData = $request->validate([
             'content'   => 'required|max:191|min:5',
             'rating'    => 'required|integer',
-            'movieID'   => 'required|integer'
         ]);
 
         $reviewCtl = new ReviewController();
         $updatedReview = $reviewCtl->edit($request, Auth::user()->id);
 
-        return 'Review updated!';
+        return view('notification', ['message' => 'Review has been successfully updated!']);
     }
 }
