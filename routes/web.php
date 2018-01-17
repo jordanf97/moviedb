@@ -8,7 +8,10 @@ Route::get('/', function () {
 
 Route::get('api/review/{id}', 'reviewController@show');
 Route::put('api/review', 'reviewController@edit');
+
+//Routes not secured although Auth is checked within controller
 route::get('/reviews/edit/{id}', 'MovieViewController@editReview');
+route::get('/movies/add', 'MovieViewController@addMovie');
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
     Route::post('review', 'reviewController@store');

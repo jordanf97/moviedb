@@ -50,7 +50,6 @@ class MovieViewController extends Controller
         } else {
             return view('notification', ['message' => 'This does not seem to be your review']);
         }
-
     }
 
     public function editReviewSubmit($id, Request $request) {
@@ -63,5 +62,13 @@ class MovieViewController extends Controller
         $updatedReview = $reviewCtl->edit($request, Auth::user()->id);
 
         return view('notification', ['message' => 'Review has been successfully updated!']);
+    }
+
+    public function addMovie() {
+        if(Auth::check()) {
+            return view('addMovie');
+        } else {
+            return view('notification', ['message' => 'You must be logged in to access this area!']);
+        }
     }
 }
